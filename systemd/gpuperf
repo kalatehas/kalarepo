@@ -1,0 +1,21 @@
+#!/bin/bash
+#change power state of my current gpu
+
+state=$1
+echo=/usr/bin/echo
+
+case $state in
+    start)
+	$echo "high" > /sys/class/drm/card0/device/power_dpm_force_performance_level
+	;;
+    stop)
+	$echo "auto" > /sys/class/drm/card0/device/power_dpm_force_performance_level
+	;;
+    *)
+	$echo "bad variable $1"
+	exit 1
+	;;
+esac
+
+
+exit 0
