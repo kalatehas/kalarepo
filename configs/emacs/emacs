@@ -1,30 +1,27 @@
-;; Load emacs 24's package system. Add MELPA repository.
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list 'package-archives
-	       '("melpa" . "http://melpa.milkbox.net/packages/")
-	       t))
+;; Add Melpa repository
+(require 'package)
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.milkbox.net/packages/")
+	     t)
 
-;; Markdownmode and makrdownmode+ must be installed at least
-(setq package-list
-      '(markdown-mode markdown-mode+))
-
-;; Activate all the packages
 (package-initialize)
 
-; Fetch the list of packages available 
+;; Set user-installed packages variable, these things MUST be installed
+(setq package-selected-packages '(markdown-mode markdown-mode+))
+
+;; Fetch list of available packages
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Install the missing packages
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
+;; Install them ( this command reqires emacs 25.1+)
+(package-install-selected-packages)
 
-;; always load best builtin theme
+
+
+;; Always load best builtin theme
 (load-theme 'wombat t)
 
-;; Support mouse wheel scrolling (when possible, eg you use GUI)
+;; Support mouse wheel scrolling (when possible)
 (when (require 'mwheel nil 'noerror)
   (mouse-wheel-mode t))
 
