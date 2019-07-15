@@ -1,0 +1,47 @@
+;; Load emacs 24's package system. Add MELPA repository.
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list 'package-archives
+	       '("melpa" . "http://melpa.milkbox.net/packages/")
+	       t))
+
+;; Markdownmode and makrdownmode+ must be installed at least
+(setq package-list
+      '(markdown-mode markdown-mode+))
+
+;; Activate all the packages
+(package-initialize)
+
+; Fetch the list of packages available 
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; Install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
+
+;; always load best builtin theme
+(load-theme 'wombat t)
+
+;; Support mouse wheel scrolling (when possible, eg you use GUI)
+(when (require 'mwheel nil 'noerror)
+  (mouse-wheel-mode t))
+
+;; Show line-number globally
+(global-linum-mode 1)
+
+;; Show column-number in the mode line
+(column-number-mode t)
+
+;; Set standard indent to 4, ident 4 chars, force use of spaces
+(setq standard-indent 4)
+(setq tab-width 4)
+(setq indent-tabs-mode nil)
+
+;; Line by line scrolling
+(setq scroll-step 1)
+
+;; Turn of noobscreen
+(setq inhibit-splash-screen t)
+
