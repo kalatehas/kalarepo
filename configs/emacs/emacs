@@ -13,10 +13,8 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Install them ( this command reqires emacs 25.1+)
+;; Install them (this command reqires emacs 25.1+)
 (package-install-selected-packages)
-
-
 
 ;; Always load best builtin theme
 (load-theme 'wombat t)
