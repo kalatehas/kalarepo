@@ -2,16 +2,24 @@
 
 # Source global definitions
 if [[ -f /etc/bashrc ]]; then
-        . /etc/bashrc
+    . /etc/bashrc
+fi
+
+# If custom definition folder exists and contains something readable, source them
+if [[ -d ~/.bashrc.d ]]; then
+    for i in ~/.bashrc.d/*; do
+	if [[ -r $i ]]; then . $i
+	fi
+    done
 fi
 
 # Add Powerline defaults
 # How to config it: https://powerline.readthedocs.io/en/latest/configuration.html
 if [[ -f `which powerline-daemon` ]]; then
-  powerline-daemon -q
-  POWERLINE_BASH_CONTINUATION=1
-  POWERLINE_BASH_SELECT=1
-  . /usr/share/powerline/bash/powerline.sh
+    powerline-daemon -q
+    POWERLINE_BASH_CONTINUATION=1
+    POWERLINE_BASH_SELECT=1
+    . /usr/share/powerline/bash/powerline.sh
 fi
 
 
