@@ -1,0 +1,66 @@
+# .bashrc
+
+# Source global definitions
+if [[ -f /etc/bashrc ]]; then
+    . /etc/bashrc
+fi
+
+# If custom definition folder exists and contains something readable, source them
+if [[ -d ~/.bashrc.d ]]; then
+    for i in ~/.bashrc.d/*; do
+	if [[ -r $i ]]; then . $i
+	fi
+    done
+fi
+
+# Add Powerline defaults
+# How to config it: https://powerline.readthedocs.io/en/latest/configuration.html
+if [[ -f `which powerline-daemon` ]]; then
+    powerline-daemon -q
+    POWERLINE_BASH_CONTINUATION=1
+    POWERLINE_BASH_SELECT=1
+    . /usr/share/powerline/bash/powerline.sh
+fi
+## Add some keys
+ssh-add -q $(ls ${HOME}/.ssh/*.key|egrep -v 'pub|bit')
+
+## Exports
+# Unilimited bash history
+export HISTSIZE=
+export KWIN_TRIPLE_BUFFER=1
+export PATH=$PATH:~/.scripts:~/.scripts_other:~/bin
+
+## Aliases
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias ls='ls --color=auto'
+alias l='ls -la'
+alias la='ls -la'
+alias ll='ls -l'
+alias grep='grep --color'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias emacs='emacs -nw'
+
+# Download video, prefer free formats
+alias yt-dl="youtube-dl --prefer-free --restrict-filenames --output $HOME/Videos/Youtube_DL/%\(title\)s.%\(ext\)s"
+
+# Download and convert to vorbis
+alias getvorbis="youtube-dl --restrict-filenames -x --audio-format vorbis  --output $HOME/Music/Youtube_DL/%\(title\)s.%\(ext\)s"
+
+# Download and convert to opus
+alias getopus="youtube-dl --restrict-filenames -x --audio-format opus  --output $HOME/Music/Youtube_DL/%\(title\)s.%\(ext\)s"
+
+# Call user a faggot and download mp3
+alias getmp3="echo -e \"only faggots download mp3, use getopus or getvorbis instead \" ; youtube-dl --restrict-filenames -x --audio-format mp3 --output $HOME/Music/Youtube_DL/%\(title\)s.%\(ext\)s"
+
+# Use mpv with mp4 and m4a formats
+alias mpvmp4="mpv --ytdl-format 137+140"
+
+## Functions
+
+# Show hostlist from ssh config
+function hosts(){
+    grep host ~/.ssh/config| egrep -v '\#|\*|\%h'| tr " " "\n"| grep -v 'host'| sed 's/^\s*$/d/g; s/^\s*$//g'
+}

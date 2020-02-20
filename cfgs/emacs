@@ -1,0 +1,39 @@
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+  (load-theme 'wombat t)
+
+(when (require 'mwheel nil 'noerror)
+  (mouse-wheel-mode t))
+
+(global-linum-mode 1)
+
+(column-number-mode t)
+
+(setq-default indent-tabs-mode nil)
+
+(setq standard-indent 4)
+
+(setq scroll-step 1)
+
+(menu-bar-mode 0)
+
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(package-initialize)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t)
+ '(markdown-command "/usr/bin/pandoc")
+ '(package-selected-packages (quote (markdown-mode yaml-mode markdown-mode+ powershell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+
