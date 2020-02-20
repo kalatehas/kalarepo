@@ -21,7 +21,8 @@ if [[ -f $(which powerline-daemon) ]]; then
     POWERLINE_BASH_SELECT=1
     . /usr/share/powerline/bash/powerline.sh
 fi
-## Add some keys, if we have agent
+
+# Add some keys, if we have agent
 if [[ ! -z $SSH_AGENT_PID ]]; then
    ssh-add -q $(ls ${HOME}/.ssh/*.key|egrep -v 'pub|bit')
 fi
