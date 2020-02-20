@@ -1,4 +1,5 @@
 #!/bin/bash
+# Chuck or symlink this file to /etc/profile.d/
 
 # Append stuff to orig PATH
 export PATH=$PATH:/usr/local/bin/
