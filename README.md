@@ -9,7 +9,7 @@ kalarepo
 │   └── emacs            # Emacs initfile for all of my computers
 ├── README.md            # This file
 └── systemd
-	├── gpuperf          # Helper for service
+    ├── gpuperf          # Helper for service
     ├── gpuperf.service  # Force amdgpu into full sweat mode, for older kernels
     └── README.md        # How to use
 ```
