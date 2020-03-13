@@ -65,5 +65,5 @@ alias mpvmp4="mpv --ytdl-format 137+140"
 
 # Show hostlist from ssh config
 function hosts(){
-    grep host ~/.ssh/config| egrep -v '\#|\*|\%h'| tr " " "\n"| grep -v 'host'| sed 's/^\s*$/d/g; s/^\s*$//g'
+    grep host ~/.ssh/config| egrep -v '\#|\*|\%h'| tr " " "\n"| grep -v 'host'| sed 's/^\s*$/d/g; s/^\s*$//g'| sort
 }
