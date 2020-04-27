@@ -30,8 +30,9 @@ fi
 ## Exports
 # Unilimited bash history
 export HISTSIZE=
+export HISTTIMEFORMAT="%FT%T "
 export KWIN_TRIPLE_BUFFER=1
-export PATH=$PATH:~/.scripts:~/.scripts_other:~/bin
+export PATH=${PATH}:${HOME}/.scripts:${HOME}/.scripts_other:${HOME}/bin:${HOME}/.local/bin
 
 ## Aliases
 alias rm='rm -i'
@@ -45,6 +46,7 @@ alias grep='grep --color'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias emacs='emacs -nw'
+alias docker='podman'
 
 # Download video, prefer free formats
 alias yt-dl="youtube-dl --prefer-free --restrict-filenames --output $HOME/Videos/Youtube_DL/%\(title\)s.%\(ext\)s"
