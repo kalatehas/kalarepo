@@ -47,7 +47,7 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias emacs='emacs -nw'
 alias docker='podman'
-
+alias gcloud="podman run -ti gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud"
 # Download video, prefer free formats
 alias yt-dl="youtube-dl --prefer-free --restrict-filenames --output $HOME/Videos/Youtube_DL/%\(title\)s.%\(ext\)s"
 
